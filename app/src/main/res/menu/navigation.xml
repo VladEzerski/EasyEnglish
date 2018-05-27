@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_dictionary"
+        android:icon="@drawable/book"
+        android:title="@string/text_dictionary" />
+    <item
+        android:id="@+id/action_tests"
+        android:icon="@drawable/alphabetical"
+        android:title="@string/text_tests" />
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/face_profile"
+        android:title="@string/text_profile" />
+
+</menu>

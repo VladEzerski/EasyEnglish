@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "134992924661",
+    "firebase_url": "https://easyenglish-deb54.firebaseio.com",
+    "project_id": "easyenglish-deb54",
+    "storage_bucket": "easyenglish-deb54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134992924661:android:6215de041d3bf6c8",
+        "android_client_info": {
+          "package_name": "com.ezerski.vladislav.easyenglish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134992924661-iicdsm2n17dnceis66tdlp612mnolqj0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-5qSF9sZQeAY-UOMdJuUAynDtakdwdWE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
