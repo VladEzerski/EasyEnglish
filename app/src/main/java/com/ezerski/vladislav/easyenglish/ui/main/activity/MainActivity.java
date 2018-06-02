@@ -1,19 +1,24 @@
-package com.ezerski.vladislav.easyenglish.ui;
+package com.ezerski.vladislav.easyenglish.ui.main.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.ezerski.vladislav.easyenglish.R;
+import com.ezerski.vladislav.easyenglish.ui.ProfileActivity;
+import com.ezerski.vladislav.easyenglish.ui.auth.SignInActivity;
+import com.ezerski.vladislav.easyenglish.ui.TestsActivity;
+import com.ezerski.vladislav.easyenglish.ui.main.fragment.WordsListFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -46,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fl_main_content_container);
+        if (fragment == null){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.fl_main_content_container, new WordsListFragment())
+                    .commit();
+        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

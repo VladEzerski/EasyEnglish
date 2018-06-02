@@ -5,7 +5,7 @@
     android:id="@+id/constrLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ezerski.vladislav.easyenglish.ui.MainActivity">
+    tools:context="com.ezerski.vladislav.easyenglish.ui.main.activity.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -25,15 +25,14 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_main"
+    <FrameLayout
+        android:id="@+id/fl_main_content_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/include2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"/>
 
     <include
         android:id="@+id/include2"

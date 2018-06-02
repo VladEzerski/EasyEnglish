@@ -30,7 +30,7 @@ public class Words implements Parcelable {
     }
 
     public Words(Map<String, Object> wordsMap, String documentId) throws FirebaseModelParsingException {
-        if (wordsMap == null || wordsMap.size() != 5) {
+        if (wordsMap == null || wordsMap.size() != 7) {
             throw new FirebaseModelParsingException();
         }
         Object dateObject = wordsMap.get(DataContract.WordsDbAttributes.FIELD_DATE);
@@ -54,6 +54,10 @@ public class Words implements Parcelable {
         this.documentId = documentId;
         this.userName = (String) userNameObject;
         this.userEmail = (String) userEmailObject;
+    }
+
+    public Words(Map<String, Object> data) {
+
     }
 
     @Override
@@ -88,7 +92,7 @@ public class Words implements Parcelable {
         }
     };
 
-    private Words(Parcel in) {
+    public Words(Parcel in) {
         userId = in.readString();
         long tmpDate = in.readLong();
         date = tmpDate != -1 ? new Date(tmpDate) : null;

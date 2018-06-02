@@ -1,4 +1,4 @@
-package com.ezerski.vladislav.easyenglish.ui;
+package com.ezerski.vladislav.easyenglish.ui.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ezerski.vladislav.easyenglish.R;
+import com.ezerski.vladislav.easyenglish.ui.main.activity.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
