@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".ui.auth.SignInActivity" />
         <activity android:name=".ui.TestsActivity" />
-        <activity android:name=".ui.ProfileActivity" />
+        <activity android:name=".ui.profile.ProfileActivity" />
         <activity
             android:name=".ui.creating.activity.CreateActivity"
             android:label="@string/title_activity_create"

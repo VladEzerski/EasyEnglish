@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -15,10 +14,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ezerski.vladislav.easyenglish.R;
-import com.ezerski.vladislav.easyenglish.ui.ProfileActivity;
+import com.ezerski.vladislav.easyenglish.ui.profile.ProfileActivity;
 import com.ezerski.vladislav.easyenglish.ui.auth.SignInActivity;
 import com.ezerski.vladislav.easyenglish.ui.TestsActivity;
 import com.ezerski.vladislav.easyenglish.ui.main.fragment.WordsListFragment;
+import com.ezerski.vladislav.easyenglish.ui.profile.ProfileFragment;
+import com.ezerski.vladislav.easyenglish.ui.tests.TestsFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -53,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fl_main_content_container);
-        if (fragment == null){
+        if (fragment == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.fl_main_content_container, new WordsListFragment())
+                    .replace(R.id.fl_main_content_container, new WordsListFragment())
                     .commit();
         }
     }
@@ -66,15 +67,25 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fl_main_content_container);
             switch (item.getItemId()) {
                 case R.id.action_dictionary:
-                    startActivity(new Intent(MainActivity.this, MainActivity.class));
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fl_main_content_container, new WordsListFragment())
+                            .commit();
                     break;
                 case R.id.action_tests:
-                    startActivity(new Intent(MainActivity.this, TestsActivity.class));
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fl_main_content_container, new TestsFragment())
+                            .commit();
                     break;
                 case R.id.action_profile:
-                    startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fl_main_content_container, new ProfileFragment())
+                            .commit();
                     break;
             }
             return false;
@@ -96,7 +107,10 @@ public class MainActivity extends AppCompatActivity {
     private void selectDrawerItem(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_first_item:
-                startActivity(new Intent(this, MainActivity.class));
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fl_main_content_container, new WordsListFragment())
+                        .commit();
                 break;
             case R.id.nav_second_item:
                 mFirebaseAuth.signOut();

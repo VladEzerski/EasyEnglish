@@ -1,4 +1,4 @@
-package com.ezerski.vladislav.easyenglish.ui;
+package com.ezerski.vladislav.easyenglish.ui.profile;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

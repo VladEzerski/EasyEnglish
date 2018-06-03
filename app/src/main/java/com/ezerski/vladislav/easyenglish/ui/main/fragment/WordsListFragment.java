@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ezerski.vladislav.easyenglish.FirebaseModelParsingException;
@@ -33,8 +34,12 @@ import java.util.List;
 public class WordsListFragment extends Fragment implements View.OnClickListener {
 
     private WordsRecyclerViewAdapter adapter;
+    private ProgressBar prLoadWordsList;
     private DocumentSnapshot lastDocument;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    public WordsListFragment() {
+    }
 
     @Nullable
     @Override
@@ -42,6 +47,7 @@ public class WordsListFragment extends Fragment implements View.OnClickListener 
         View view = inflater.inflate(R.layout.fragment_words_list, container, false);
         RecyclerView rvWordsList = view.findViewById(R.id.rv_words_list);
         FloatingActionButton fabCreate = view.findViewById(R.id.fab_create_words);
+        prLoadWordsList = view.findViewById(R.id.pr_words_list);
         fabCreate.setOnClickListener(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rvWordsList.setLayoutManager(layoutManager);
@@ -69,12 +75,14 @@ public class WordsListFragment extends Fragment implements View.OnClickListener 
                     .orderBy(DataContract.WordsDbAttributes.FIELD_DATE, Query.Direction.DESCENDING)
                     .startAfter(lastDocument);
         }
+        prLoadWordsList.setVisibility(View.VISIBLE);
         query
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            prLoadWordsList.setVisibility(View.GONE);
                             List<Words> wordsList = extractWords(task.getResult());
                             if (wordsList != null && wordsList.size() != 0) {
                                 adapter.updateWordsList(wordsList);
