@@ -18,7 +18,7 @@ import com.ezerski.vladislav.easyenglish.FirebaseModelParsingException;
 import com.ezerski.vladislav.easyenglish.R;
 import com.ezerski.vladislav.easyenglish.db.DataContract;
 import com.ezerski.vladislav.easyenglish.db.Words;
-import com.ezerski.vladislav.easyenglish.ui.CreateActivity;
+import com.ezerski.vladislav.easyenglish.ui.creating.activity.CreateActivity;
 import com.ezerski.vladislav.easyenglish.ui.main.adapter.WordsRecyclerViewAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,8 +32,6 @@ import java.util.List;
 
 public class WordsListFragment extends Fragment implements View.OnClickListener {
 
-    private RecyclerView rvWordsList;
-    private FloatingActionButton fabCreate;
     private WordsRecyclerViewAdapter adapter;
     private DocumentSnapshot lastDocument;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -42,8 +40,8 @@ public class WordsListFragment extends Fragment implements View.OnClickListener 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_words_list, container, false);
-        rvWordsList = view.findViewById(R.id.rv_words_list);
-        fabCreate = view.findViewById(R.id.fab_create_words);
+        RecyclerView rvWordsList = view.findViewById(R.id.rv_words_list);
+        FloatingActionButton fabCreate = view.findViewById(R.id.fab_create_words);
         fabCreate.setOnClickListener(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rvWordsList.setLayoutManager(layoutManager);
