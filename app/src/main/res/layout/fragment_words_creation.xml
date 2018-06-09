@@ -26,7 +26,7 @@
             android:gravity="center"
             android:text="@string/english"
             android:textColor="@android:color/black"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btn_change_language"
@@ -46,7 +46,7 @@
             android:gravity="center_horizontal|center"
             android:text="@string/russian"
             android:textColor="@android:color/black"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
     </RelativeLayout>
 
@@ -56,9 +56,11 @@
         android:layout_height="0dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
+        android:background="@drawable/edit_text_frame"
         android:ems="10"
         android:hint="@string/enter_your_original_word"
         android:inputType="textMultiLine"
+        android:paddingStart="4dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_translate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -73,9 +75,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
+        android:background="@drawable/edit_text_frame"
         android:ems="10"
         android:hint="@string/enter_your_translated_word"
         android:inputType="textMultiLine"
+        android:paddingStart="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -89,7 +93,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        android:background="@color/orange_color"
+        android:background="@color/colorPrimaryDark"
         android:text="@string/translate"
         app:layout_constraintBottom_toTopOf="@+id/et_translated_word"
         app:layout_constraintEnd_toEndOf="parent"

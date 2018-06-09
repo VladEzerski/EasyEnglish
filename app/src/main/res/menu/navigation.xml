@@ -3,15 +3,15 @@
 
     <item
         android:id="@+id/action_dictionary"
-        android:icon="@drawable/book"
+        android:icon="@drawable/ic_dictionary"
         android:title="@string/text_dictionary" />
     <item
         android:id="@+id/action_tests"
-        android:icon="@drawable/alphabetical"
-        android:title="@string/text_tests" />
+        android:icon="@drawable/ic_tests"
+        android:title="@string/text_tests"/>
     <item
         android:id="@+id/action_profile"
-        android:icon="@drawable/face_profile"
+        android:icon="@drawable/ic_profile2"
         android:title="@string/text_profile" />
 
 </menu>
