@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
@@ -17,6 +18,8 @@ import com.ezerski.vladislav.easyenglish.R;
 import com.ezerski.vladislav.easyenglish.db.DataContract;
 import com.ezerski.vladislav.easyenglish.db.Words;
 import com.ezerski.vladislav.easyenglish.ui.main.activity.MainActivity;
+import com.ezerski.vladislav.easyenglish.utils.SnackbarUtils;
+import com.ezerski.vladislav.easyenglish.utils.YandexTranslator;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,10 +33,10 @@ public class CreateWordsFragment extends Fragment implements View.OnClickListene
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-
     private EditText etOriginalWord;
     private EditText etTranslatedWord;
     private ProgressBar prCreate;
+    private YandexTranslator translator = new YandexTranslator();
 
     @Nullable
     @Override
@@ -41,6 +44,8 @@ public class CreateWordsFragment extends Fragment implements View.OnClickListene
         View view = inflater.inflate(R.layout.fragment_words_creation, container, false);
         etOriginalWord = view.findViewById(R.id.et_original_word);
         etTranslatedWord = view.findViewById(R.id.et_translated_word);
+        Button btnTranslate = view.findViewById(R.id.btn_translate);
+        btnTranslate.setOnClickListener(this);
         prCreate = view.findViewById(R.id.pb_create_fragment);
         return view;
     }
@@ -72,6 +77,30 @@ public class CreateWordsFragment extends Fragment implements View.OnClickListene
         }
     }
 
+    private void translatingWords() {
+        if (TextUtils.isEmpty(etOriginalWord.getText().toString())) {
+            SnackbarUtils.showShort(etOriginalWord, R.string.msg_empty_words_string);
+        } else {
+            final String textForTranslating = etOriginalWord.getText().toString();
+            final String languagePair = "en-ru";
+            prCreate.setVisibility(View.VISIBLE);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    final String translatorResponse = translator
+                            .getTranslatedWord(textForTranslating, languagePair);
+                    etTranslatedWord.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            etTranslatedWord.setText(translatorResponse);
+                            prCreate.setVisibility(View.GONE);
+                        }
+                    });
+                }
+            }).start();
+        }
+    }
+
     private boolean validData() {
         boolean valid = true;
         if ((TextUtils.isEmpty(etOriginalWord.getText().toString()))) {
@@ -100,8 +129,7 @@ public class CreateWordsFragment extends Fragment implements View.OnClickListene
         startActivity(intent);
     }
 
-    @Override
     public void onClick(View view) {
-
+        translatingWords();
     }
 }
