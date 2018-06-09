@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.ezerski.vladislav.easyenglish.R;
 import com.ezerski.vladislav.easyenglish.db.DataContract;
@@ -35,15 +36,26 @@ public class CreateWordsFragment extends Fragment implements View.OnClickListene
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private EditText etOriginalWord;
     private EditText etTranslatedWord;
+    private TextView tvFirstLanguage;
+    private TextView tvSecondLanguage;
     private ProgressBar prCreate;
     private YandexTranslator translator = new YandexTranslator();
 
+    String languagePair = "en-ru";
+    final String languagePairEnRu = "en-ru";
+    final String languagePairRuEn = "ru-en";
+
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_words_creation, container, false);
         etOriginalWord = view.findViewById(R.id.et_original_word);
         etTranslatedWord = view.findViewById(R.id.et_translated_word);
+        tvFirstLanguage = view.findViewById(R.id.tv_first_language);
+        tvSecondLanguage = view.findViewById(R.id.tv_second_language);
+        Button btnChangeLanguage = view.findViewById(R.id.btn_change_language);
+        btnChangeLanguage.setOnClickListener(this);
         Button btnTranslate = view.findViewById(R.id.btn_translate);
         btnTranslate.setOnClickListener(this);
         prCreate = view.findViewById(R.id.pb_create_fragment);
@@ -82,7 +94,6 @@ public class CreateWordsFragment extends Fragment implements View.OnClickListene
             SnackbarUtils.showShort(etOriginalWord, R.string.msg_empty_words_string);
         } else {
             final String textForTranslating = etOriginalWord.getText().toString();
-            final String languagePair = "en-ru";
             prCreate.setVisibility(View.VISIBLE);
             new Thread(new Runnable() {
                 @Override
@@ -100,6 +111,7 @@ public class CreateWordsFragment extends Fragment implements View.OnClickListene
             }).start();
         }
     }
+
 
     private boolean validData() {
         boolean valid = true;
@@ -130,6 +142,23 @@ public class CreateWordsFragment extends Fragment implements View.OnClickListene
     }
 
     public void onClick(View view) {
-        translatingWords();
+        switch (view.getId()) {
+            case R.id.btn_change_language:
+                if (tvFirstLanguage.getText().toString().equals(getString(R.string.english))
+                        && tvSecondLanguage.getText().toString().equals(getString(R.string.russian))) {
+                    tvFirstLanguage.setText(getString(R.string.russian));
+                    tvSecondLanguage.setText(getString(R.string.english));
+                    languagePair = languagePairRuEn;
+                } else if (tvFirstLanguage.getText().toString().equals(getString(R.string.russian))
+                        && tvSecondLanguage.getText().toString().equals(getString(R.string.english))) {
+                    tvFirstLanguage.setText(getString(R.string.english));
+                    tvSecondLanguage.setText(getString(R.string.russian));
+                    languagePair = languagePairEnRu;
+                }
+                break;
+            case R.id.btn_translate:
+                translatingWords();
+                break;
+        }
     }
 }
