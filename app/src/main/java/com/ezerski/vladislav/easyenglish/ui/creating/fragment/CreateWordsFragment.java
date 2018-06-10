@@ -68,8 +68,9 @@ public class CreateWordsFragment extends Fragment implements View.OnClickListene
             if (currentUser != null && !currentUser.isAnonymous()) {
                 prCreate.setVisibility(View.VISIBLE);
                 db.collection(DataContract.WordsDbAttributes.WORDS_COLLECTION_NAME)
-                        .add(new Words(etOriginalWord.getText().toString(),
-                                etTranslatedWord.getText().toString(),
+                        .add(new Words(
+                                etOriginalWord.getText().toString().trim(),
+                                etTranslatedWord.getText().toString().trim(),
                                 new Date(),
                                 "vlad",
                                 currentUser.getUid(),
@@ -116,13 +117,13 @@ public class CreateWordsFragment extends Fragment implements View.OnClickListene
     private boolean validData() {
         boolean valid = true;
         if ((TextUtils.isEmpty(etOriginalWord.getText().toString()))) {
-            etOriginalWord.setError("Enter word");
+            etOriginalWord.setError(getString(R.string.er_enter_word));
             valid = false;
         } else {
             etOriginalWord.setError(null);
         }
         if (TextUtils.isEmpty(etTranslatedWord.getText().toString())) {
-            etTranslatedWord.setError("Enter word");
+            etTranslatedWord.setError(getString(R.string.er_enter_word));
             valid = false;
         } else {
             etTranslatedWord.setError(null);

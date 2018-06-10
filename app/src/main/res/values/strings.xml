@@ -25,4 +25,5 @@
     <string name="enter_your_original_word">Enter your original word</string>
     <string name="enter_your_translated_word">Enter your translated word:</string>
     <string name="translate">Перевести</string>
+    <string name="er_enter_word">Enter word</string>
 </resources>

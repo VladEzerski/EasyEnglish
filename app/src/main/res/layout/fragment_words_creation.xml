@@ -54,7 +54,7 @@
         android:id="@+id/et_original_word"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/edit_text_frame"
         android:ems="10"
@@ -63,7 +63,6 @@
         android:paddingStart="4dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_translate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rel_layout" />
 
@@ -88,12 +87,12 @@
 
     <Button
         android:id="@+id/btn_translate"
+        style="@style/ButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        android:background="@color/colorPrimaryDark"
         android:text="@string/translate"
         app:layout_constraintBottom_toTopOf="@+id/et_translated_word"
         app:layout_constraintEnd_toEndOf="parent"

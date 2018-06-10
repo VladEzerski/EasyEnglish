@@ -14,12 +14,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ezerski.vladislav.easyenglish.R;
-import com.ezerski.vladislav.easyenglish.ui.profile.ProfileActivity;
 import com.ezerski.vladislav.easyenglish.ui.auth.SignInActivity;
-import com.ezerski.vladislav.easyenglish.ui.TestsActivity;
 import com.ezerski.vladislav.easyenglish.ui.main.fragment.WordsListFragment;
 import com.ezerski.vladislav.easyenglish.ui.profile.ProfileFragment;
-import com.ezerski.vladislav.easyenglish.ui.tests.TestsFragment;
+import com.ezerski.vladislav.easyenglish.ui.tests.activity.TestsActivity;
+import com.ezerski.vladislav.easyenglish.ui.tests.fragment.TestsFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -76,10 +75,7 @@ public class MainActivity extends AppCompatActivity {
                             .commit();
                     break;
                 case R.id.action_tests:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.fl_main_content_container, new TestsFragment())
-                            .commit();
+                    startActivity(new Intent(MainActivity.this, TestsActivity.class));
                     break;
                 case R.id.action_profile:
                     getSupportFragmentManager()

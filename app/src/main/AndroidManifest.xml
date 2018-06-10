@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.auth.SignInActivity" />
-        <activity android:name=".ui.TestsActivity" />
+        <activity android:name=".ui.tests.activity.TestsActivity" />
         <activity android:name=".ui.profile.ProfileActivity" />
         <activity
             android:name=".ui.creating.activity.CreateActivity"
