@@ -1,11 +1,13 @@
 package com.ezerski.vladislav.easyenglish.ui.creating.fragment;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 import com.ezerski.vladislav.easyenglish.R;
 import com.ezerski.vladislav.easyenglish.db.DataContract;
 import com.ezerski.vladislav.easyenglish.db.Words;
+import com.ezerski.vladislav.easyenglish.ui.creating.activity.CreateActivity;
 import com.ezerski.vladislav.easyenglish.ui.main.activity.MainActivity;
 import com.ezerski.vladislav.easyenglish.utils.SnackbarUtils;
 import com.ezerski.vladislav.easyenglish.utils.YandexTranslator;
@@ -82,11 +85,28 @@ public class CreateWordsFragment extends Fragment implements View.OnClickListene
                                     task.getResult().
                                             update(DataContract.WordsDbAttributes.FIELD_DOCUMENT_ID,
                                                     task.getResult().getId());
+                                    showCreateDialog();
                                 }
                             }
                         });
-                exitToMainActivity();
             }
+        }
+    }
+
+    private void showCreateDialog() {
+        Activity activity = getActivity();
+        if (activity != null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder
+                    .setMessage("Слово успешно добавлено!")
+                    .setPositiveButton("Продолжить", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            exitToMainActivity();
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
     }
 

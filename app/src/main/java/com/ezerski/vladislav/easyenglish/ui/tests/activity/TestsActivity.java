@@ -37,15 +37,15 @@ public class TestsActivity extends AppCompatActivity {
             case android.R.id.home:
                 AlertDialog.Builder builder = new AlertDialog.Builder(TestsActivity.this);
                 builder
-                        .setTitle("Cancel")
-                        .setMessage("Do you really want to leave?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        .setTitle("Выход")
+                        .setMessage("Вы уверены, что хотите выйти?")
+                        .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 finish();
                             }
                         })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.cancel();
@@ -63,15 +63,15 @@ public class TestsActivity extends AppCompatActivity {
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(TestsActivity.this);
         builder
-                .setTitle("Cancel")
-                .setMessage("Do you really want to leave?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setTitle("Выход")
+                .setMessage("Вы уверены, что хотите выйти?")
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         finish();
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
