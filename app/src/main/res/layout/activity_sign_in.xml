@@ -9,35 +9,46 @@
         android:id="@+id/tv_app_name_toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="@string/app_name"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="36sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="40sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_sign_in_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_frame"
         android:ems="10"
         android:hint="@string/login"
         android:inputType="textPersonName"
+        android:paddingBottom="8dp"
+        android:paddingLeft="4dp"
+        android:paddingTop="8dp"
         android:textColorHint="@android:color/black"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/et_sign_in_password"
-        app:layout_constraintTop_toBottomOf="@+id/tv_app_name_toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
         android:id="@+id/et_sign_in_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/edit_text_frame"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:paddingBottom="8dp"
+        android:paddingLeft="4dp"
+        android:paddingTop="8dp"
         android:textColorHint="@android:color/black"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="1.0"
@@ -46,18 +57,22 @@
 
     <Button
         android:id="@+id/btn_sign_in"
+        style="@style/ButtonStyle"
         android:layout_width="0dp"
         android:layout_height="47dp"
+        android:layout_marginTop="24dp"
         android:text="@string/enter"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/et_sign_in_password" />
 
     <Button
         android:id="@+id/btn_create_account"
+        style="@style/ButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:text="@string/registration"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="1.0"
@@ -78,11 +93,14 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.9" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="156dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_app_name_toolbar"
+        app:srcCompat="@drawable/english" />
 
 </android.support.constraint.ConstraintLayout>
