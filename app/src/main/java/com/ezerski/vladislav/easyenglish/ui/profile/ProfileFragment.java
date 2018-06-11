@@ -32,7 +32,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         tvProfileUsername = view.findViewById(R.id.tv_profile_username);
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null && !currentUser.isAnonymous()) {
-            tvProfileUsername.setText(currentUser.getEmail());
+           // tvProfileUsername.setText(currentUser.getEmail());
         }
         return view;
     }
